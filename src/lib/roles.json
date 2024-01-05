@@ -1,0 +1,106 @@
+[
+	{
+		"name": "Civilian",
+		"team": "Either",
+		"description": "No special ability"
+	},
+	{
+		"name": "President",
+		"team": "Blue",
+		"description": "Avoid the bomber"
+	},
+	{
+		"name": "Agent",
+		"team": "Either",
+		"description": "Force a card share once per round"
+	},
+	{ "name": "Agoraphobe", "team": "Grey", "description": "Never leave your room" },
+	{
+		"name": "Ahab",
+		"team": "Grey",
+		"description": "Stay away from Moby and the bomber"
+	},
+	{ "name": "Angel", "team": "Either", "description": "Tell the truth" },
+	{
+		"name": "Anarchist",
+		"team": "Grey",
+		"description": "Usurp the room leader a majority of rounds",
+		"rules": "You win if your vote helped successfully usurp a leader during a majority of the rounds. For example, in a 3 round game, you must have usurped a leader 2 of the 3 rounds."
+	},
+	{
+		"name": "Ambassador",
+		"team": "Either",
+		"description": "Walk freely between the rooms",
+		"rules": "As soon as you are dealt your card, announce “I am an Ambassador!” Your card is permanently publicly revealed. You have the “immune” condition. Players with the “immune” condition are immune to all powers and conditions. Ambassadors can walk freely between the 2 rooms. Ambassadors are never considered a part of a room’s population. Therefore, Ambassadors can never take part in any vote, be hostages, be leaders, and they can never be targeted by abilities"
+	},
+	{ "name": "Blind", "team": "Either", "description": "Keep your eyes closed" },
+	{
+		"name": "Bomber",
+		"team": "Red",
+		"description": "Be with the president the final round."
+	},
+	{
+		"name": "Bomb-Bot",
+		"team": "Grey",
+		"description": "Be with the bomber, avoid the president."
+	},
+	{
+		"name": "Bouncer",
+		"team": "Either",
+		"description": "Kick an Extra player out",
+		"rules": "You have the BOUNCER power: if you are in a room that has more players than the other room,  you may privately reveal your card to any player and verbally tell them, “Get out!” When you do, that player must immediately change rooms. The BOUNCER power does not work during the last round or between rounds."
+	},
+	{
+		"name": "Butler",
+		"team": "Grey",
+		"description": "Be with the maid and president."
+	},
+	{
+		"name": "Clone",
+		"team": "Grey",
+		"description": "The player that first shares with you must win"
+	},
+	{ "name": "Clown", "team": "Either", "description": "Smile... always" },
+	{
+		"name": "Conman",
+		"team": "Either",
+		"description": "Color share forces a private reveal",
+		"rules": "You have the CONMAN power: when a player agrees to color share with you, private reveal instead. They must private reveal their card too."
+	},
+	{
+		"name": "Coyboy",
+		"team": "Either",
+		"description": "Can only color share",
+		"rules": "ou begin with the “coy” condition. Players with the “coy” condition may ONLY color share unless a character’s power forces otherwise"
+	},
+	{
+		"name": "Criminal",
+		"team": "Either",
+		"description": "Card reveal forces shy condition",
+		"rules": "You have the CRIMINAL power: any player that card shares with you gains the “shy” condition. Players with the “shy” condition may not reveal any part of their card to any player"
+	},
+	{
+		"name": "Cupid",
+		"team": "Red",
+		"description": "Make 2 players 'In Love' once per game",
+		"rules": "You have the CUPID power: once per game, you may privately reveal your card to 2 players. You must verbally tell your target players, “You are in love with each other.” Those 2 players gain the “in love” condition. Players with the “in love” condition replace their original win objective with the following win objective: Be in the same room with the player with whom you are “in love” at the end of the game or fail to win. The CUPID power cannot be used on yourself."
+	},
+	{
+		"name": "Dealer",
+		"team": "Either",
+		"description": "Card share forces foolish",
+		"rules": "You have the DEALER power: any player that card shares with you gains the “foolish” condition. Players with the “foolish” condition can never turn down an offer to card or color share."
+	},
+	{ "name": "Decoy", "team": "Grey", "description": "Get shot by the sniper" },
+	{ "name": "Demon", "team": "Either", "description": "You must (verbally) lie" },
+	{
+		"name": "Doctor",
+		"team": "Blue",
+		"description": "Card share with the president"
+	},
+	{
+		"name": "Dr. Boom",
+		"team": "Red",
+		"description": "Card share with the president and instantly win."
+	}
+]

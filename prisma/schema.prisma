@@ -1,0 +1,47 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Room {
+  id             Int       @id @default(autoincrement())
+  roomName       String    @unique
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  users          User[]
+  gameState      String    @default("Lobby")
+  enabledRoles   String    @default("[]")
+  currentRound   Int       @default(0)
+  roundStartTime DateTime?
+}
+
+model User {
+  id             Int       @id @default(autoincrement())
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  name           String
+  roleId         Int?
+  role           Role?     @relation(fields: [roleId], references: [id])
+  team           String?
+  roomId         Int
+  disconnectedAt DateTime?
+  room           Room      @relation(fields: [roomId], references: [id], onDelete: Cascade)
+  primaryUser    Boolean   @default(false)
+  assignedRoom   Boolean   @default(false)
+}
+
+model Role {
+  id          Int     @id @default(autoincrement())
+  name        String
+  description String
+  team        String
+  rules       String?
+  users       User[]
+}
