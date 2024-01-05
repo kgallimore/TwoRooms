@@ -8,6 +8,7 @@
 		"preview": "vite preview",
 		"generate": "prisma generate",
 		"migrate": "prisma migrate dev --name init",
+		"start:prod": "prisma migrate deploy && node build",
 		"studio": "prisma studio",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
