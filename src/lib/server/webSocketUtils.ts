@@ -62,25 +62,6 @@ export const createWSSGlobalInstance = () => {
 
 	wss.on('connection', (ws: ExtendedWebSocket) => {
 		ws.socketId = nanoid();
-		// const url = req.url ? parse(req.url) : null;
-		// if (url?.search == null) {
-		// 	ws.close();
-		// 	return;
-		// }
-		// const search = new URLSearchParams(url.search);
-		// if (!search) {
-		// 	ws.close();
-		// 	return;
-		// }
-		// const room = parseInt(search.get('room') ?? '');
-		// const user = parseInt(search.get('user') ?? '');
-		// if (!room || !user) {
-		// 	ws.close();
-		// 	return;
-		// }
-		// ws.room = room;
-		// ws.user = user;
-		//console.log(`[wss:global] client connected (${ws.socketId})`);
 		ws.on('message', () => {});
 
 		ws.on('close', async () => {

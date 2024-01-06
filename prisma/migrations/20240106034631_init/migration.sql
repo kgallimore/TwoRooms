@@ -21,6 +21,7 @@ CREATE TABLE "User" (
     "roomId" INTEGER NOT NULL,
     "disconnectedAt" DATETIME,
     "primaryUser" BOOLEAN NOT NULL DEFAULT false,
+    "assignedRoom" BOOLEAN NOT NULL DEFAULT false,
     CONSTRAINT "User_roleId_fkey" FOREIGN KEY ("roleId") REFERENCES "Role" ("id") ON DELETE SET NULL ON UPDATE CASCADE,
     CONSTRAINT "User_roomId_fkey" FOREIGN KEY ("roomId") REFERENCES "Room" ("id") ON DELETE CASCADE ON UPDATE CASCADE
 );
