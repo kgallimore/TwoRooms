@@ -4,8 +4,7 @@
 DATABASE="./prisma/tworooms.db"
 if [ ! -e /$DATABASE ]; then
     npm run migrate && npm run seed
-fi
 else
-    npm run migrate 
+    npm run migrate
 fi
 npm run start:prod
