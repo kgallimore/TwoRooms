@@ -19,4 +19,5 @@ COPY src/lib/roles.ts ./src/lib/roles.ts
 COPY prodserver.ts .
 EXPOSE 3000
 ENV NODE_ENV=production
-ENTRYPOINT ["/initialize.sh"]
+RUN ["chmod", "+x", "initialize.sh"]
+ENTRYPOINT ["initialize.sh"]
