@@ -5,7 +5,6 @@ RUN npm ci
 COPY . .
 RUN npm run generate
 RUN npm run build
-RUN npm run seed
 RUN npm prune --production
 
 FROM node:18-alpine
