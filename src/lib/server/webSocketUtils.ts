@@ -26,7 +26,7 @@ export interface WebsocketMessages {
 	gameStateChanged?: GameStates;
 	rolesChanged?: number[];
 	gameStarted?: {
-		assignedRoles: { [userId: number]: number };
+		users: User[];
 		gameState: GameStates;
 		currentRound: number;
 		roundStartTime: Date;

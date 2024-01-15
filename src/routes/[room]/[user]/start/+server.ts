@@ -70,7 +70,7 @@ export const POST: RequestHandler = async ({ params, request, locals }) => {
 	}
 	sendToClients(locals.wss, targetRoom.id, {
 		gameStarted: {
-			assignedRoles,
+			users: roomUpdated.users,
 			gameState: 'In Progress',
 			currentRound: numRounds,
 			roundStartTime: roundStartTime

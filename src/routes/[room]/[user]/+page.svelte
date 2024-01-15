@@ -9,7 +9,7 @@
 	const room = data.room;
 	let enabledRoles = JSON.parse(room!.enabledRoles) as number[];
 	let checkedRoles: number[] = enabledRoles;
-	const currentUser = room!.users.find((user) => user.name === data.user);
+	$: currentUser = room!.users.find((user) => user.name === data.user);
 	$: userRole = roles.find((role) => role.id == currentUser?.roleId);
 	let ws: WebSocket;
 	let timer: NodeJS.Timeout;
@@ -71,12 +71,7 @@
 			}
 			if (message.gameStarted) {
 				assignmentModal.showModal();
-				Object.entries(message.gameStarted.assignedRoles).forEach(([key, value]) => {
-					const user = room.users.findIndex((user) => user.id === parseInt(key));
-					if (user != -1) {
-						room.users[user].roleId = value;
-					}
-				});
+				room.users = message.gameStarted.users;
 				room.gameState = message.gameStarted.gameState;
 				room.currentRound = message.gameStarted.currentRound;
 				room.roundStartTime = new Date(message.gameStarted.roundStartTime);
