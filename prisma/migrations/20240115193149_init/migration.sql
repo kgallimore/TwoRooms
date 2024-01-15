@@ -35,5 +35,19 @@ CREATE TABLE "Role" (
     "rules" TEXT
 );
 
+-- CreateTable
+CREATE TABLE "_LinkedRoles" (
+    "A" INTEGER NOT NULL,
+    "B" INTEGER NOT NULL,
+    CONSTRAINT "_LinkedRoles_A_fkey" FOREIGN KEY ("A") REFERENCES "Role" ("id") ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT "_LinkedRoles_B_fkey" FOREIGN KEY ("B") REFERENCES "Role" ("id") ON DELETE CASCADE ON UPDATE CASCADE
+);
+
 -- CreateIndex
 CREATE UNIQUE INDEX "Room_roomName_key" ON "Room"("roomName");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "_LinkedRoles_AB_unique" ON "_LinkedRoles"("A", "B");
+
+-- CreateIndex
+CREATE INDEX "_LinkedRoles_B_index" ON "_LinkedRoles"("B");

@@ -212,7 +212,12 @@ export const unSanRoles: Array<RoleData> = [
 		rules:
 			'You have the DEALER power: any player that card shares with you gains the "foolish" condition. Players with the "foolish" condition can never turn down an offer to card or color share. Note: If a player with the “foolish” condition were to acquire a contradictory condition (e.g. “shy” or “coy”), the 2 conditions would cancel one another, leaving the player with neither condition.'
 	},
-	{ name: 'Decoy', team: 'Gray', description: 'Get shot by the sniper' },
+	{
+		name: 'Decoy',
+		team: 'Gray',
+		description: 'Get shot by the sniper',
+		linkedCards: ['Sniper', 'Target']
+	},
 	{
 		name: 'Demon',
 		team: 'Either',
@@ -417,7 +422,7 @@ export const unSanRoles: Array<RoleData> = [
 		name: 'Target',
 		team: 'Gray',
 		description: 'Don\t get shot by the sniper',
-		linkedCards: ['Sniper'],
+		linkedCards: ['Sniper', 'Decoy'],
 		rules: 'You win if the Sniper does not shoot you at the end of the last round.'
 	},
 	{
@@ -464,5 +469,3 @@ export const unSanRoles: Array<RoleData> = [
 		description: 'Make all survivors zombies'
 	}
 ];
-
-// cum

@@ -93,7 +93,7 @@
 		};
 		ws.onerror = (err) => {
 			// Reconnect
-			alert('Websocket error, attempting to reconnect');
+			console.warn('Websocket error, attempting to reconnect');
 			console.error(err);
 			setTimeout(() => {
 				connectWebsockets();
@@ -118,13 +118,30 @@
 			currentTarget: EventTarget & HTMLInputElement;
 		}
 	) {
-		if (event.currentTarget.checked) {
-			checkedRoles.push(id);
-		} else {
-			checkedRoles.splice(
-				checkedRoles.findIndex((role) => role === id),
-				1
+		const targetRole = roles.find((role) => role.id == id);
+		if (!targetRole) return;
+		const reqRoles: number[] = [id];
+		if (targetRole.requiredRoles || targetRole.requiringRoles) {
+			reqRoles.push(
+				...(targetRole.requiredRoles.map((role) => role.id) ?? []),
+				...(targetRole.requiringRoles.map((role) => role.id) ?? [])
 			);
+		}
+		if (event.currentTarget.checked) {
+			reqRoles.forEach((role) => {
+				if (!checkedRoles.includes(role)) {
+					checkedRoles.push(role);
+				}
+			});
+		} else {
+			reqRoles.forEach((role) => {
+				if (checkedRoles.includes(role)) {
+					checkedRoles.splice(
+						checkedRoles.findIndex((r) => r === role),
+						1
+					);
+				}
+			});
 		}
 		sendWsMessage({ rolesChanged: checkedRoles });
 	}
@@ -221,6 +238,20 @@
 	</form>
 </dialog>
 {#if room?.gameState == 'Lobby'}
+	<div class="sticky top-0 w-full z-10 bg-neutral">
+		Current {enabledRoles.length} Roles:
+		{#each enabledRoles as role}
+			<a
+				href="#{roles.find((findRole) => findRole.id == role)?.name}{roles.find(
+					(findRole) => findRole.id == role
+				)?.team}"
+				class="font-bold text-{roles
+					.find((findRole) => findRole.id == role)
+					?.team.toLowerCase()}-500"
+				>{roles.find((findRole) => findRole.id == role)?.name}
+			</a>
+		{/each}
+	</div>
 	<table class="table">
 		<thead>
 			<tr>
@@ -230,10 +261,19 @@
 		</thead>
 		<tbody>
 			{#each roles.filter((r) => r.name != 'Civilian') as role}
-				<tr>
+				<tr id="{role.name}{role.team}">
 					<td
 						><div class:tooltip={role.rules} data-tip={role.rules} class="w-full text-left">
-							<span class="font-bold text-{role.team.toLowerCase()}-500">{role.name}:</span>
+							<span class="font-bold text-{role.team.toLowerCase()}-500">{role.name}</span
+							>{#if role.requiredRoles}{#each role.requiredRoles as reqRole}/<a
+										href="#{reqRole.name}{reqRole.team}"
+										class="font-bold text-{reqRole.team.toLowerCase()}-500">{reqRole.name}</a
+									>{/each}{/if}
+							{#if role.requiringRoles}{#each role.requiringRoles as reqRole}/<a
+										href="#{reqRole.name}{reqRole.team}"
+										class="font-bold text-{reqRole.team.toLowerCase()}-500">{reqRole.name}</a
+									>{/each}{/if}:
+
 							{role.description}
 						</div></td
 					>
